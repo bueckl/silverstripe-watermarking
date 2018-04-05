@@ -12,9 +12,13 @@ class GDBackend_WatermarkExtension extends Extension {
     $image_width = $this->owner->getWidth();
     $image_height = $this->owner->getHeight();
     
-    // watermark should not cover more than 25% of original image
-    $watermark_width = ceil($image_width / 2);
-    $watermark_height = ceil($image_height / 2);
+    // watermark should not cover more than 25% of original image -> NOPE We don't want that!!!
+    // $watermark_width = ceil($image_width / 2);
+    // $watermark_height = ceil($image_height / 2);
+    $watermark_width = $image_width;
+    $watermark_height = $image_height;
+
+    
     if ($watermark->getWidth() > $watermark_width || $watermark->getHeight() > $watermark_height) {
       $watermark = $watermark->SetRatioSize($watermark_width, $watermark_height);
     }
